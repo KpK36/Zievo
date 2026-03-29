@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('borrowed_by')->nullable();
             $table->timestamp('borrowed_at')->nullable();
             $table->string('register_by')->nullable();
+            $table->timestamp('returned_at')->nullable();
+            $table->timestamp('deadline')->nullable();
+            $table->timestamp('notified_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
