@@ -52,7 +52,7 @@ readonly class BookService
     {
         $book = $this->bookRepository->findOrFail($id);
 
-        if ((int)$book->getAttribute('register_by') !== auth()->id()) {
+        if ($book->getAttribute('register_by') !== auth()->id()) {
             abort(403, 'Você não tem permissão para deletar este livro.');
         }
 
@@ -98,11 +98,11 @@ readonly class BookService
     {
         $book = $this->bookRepository->findOrFail($id);
 
-        if ((int)$book->getAttribute('borrowed_by') !== auth()->id()) {
+        if ($book->getAttribute('borrowed_by') !== auth()->id()) {
             abort(403, 'Você não tem permissão para devolver este livro.');
         }
 
-        if (empty((int)$book->getAttribute('borrowed_by'))) {
+        if (empty($book->getAttribute('borrowed_by'))) {
             abort(422, 'Livro já devolvido.');
         }
 
